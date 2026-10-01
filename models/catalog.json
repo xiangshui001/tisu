@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "models": [
+    {
+      "id": "astral-library",
+      "name": "星穹图书馆",
+      "version": "1.0.0",
+      "entry": "components/astral-library/index.js",
+      "example": "examples/library.html",
+      "fullPageExample": "examples/full-page/index.html",
+      "sourceCommit": "da1b3224e62d95fc10c9b014dd09cbd7414a95a0",
+      "floors": 3,
+      "style": [
+        "voxel",
+        "fantasy",
+        "gothic",
+        "JRPG"
+      ]
+    }
+  ]
+}

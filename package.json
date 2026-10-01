@@ -1,0 +1,21 @@
+{
+  "name": "@tisu/astral-library",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "可嵌入辞书工作台的幻想体素图书馆",
+  "exports": {
+    ".": {
+      "types": "./components/astral-library/index.d.ts",
+      "import": "./components/astral-library/index.js"
+    },
+    "./architecture": "./components/astral-library/architecture.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "preview": "python3 -m http.server 8000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
