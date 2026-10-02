@@ -10,11 +10,11 @@
 <body>
   <header><div class="brand">TISU<small>A PLACE FOR STORIES</small></div><a href="./full-page/index.html">打开原版全屏示例 ↗</a></header>
   <main>
-    <aside><span class="eyebrow">WORKBENCH / LIBRARY</span><h1>在书页之间，<br>留一处风景。</h1><p class="intro">这是图书馆嵌入工作台面板的示例。点击进入，沿书架与回廊漫步；右侧楼梯连接三层书厅。</p><div class="words"><div class="word"><b>清雅</b><small>qīng yǎ</small><p>清新雅致。像窗边的一束光，落在未合上的书页。</p></div><div class="word"><b>静谧</b><small>jìng mì</small><p>安静。在群星之下，给阅读留一点时间。</p></div></div></aside>
+    <aside><span class="eyebrow">WORKBENCH / LIBRARY</span><h1>在书页之间，<br>留一处风景。</h1><p class="intro">这是图书馆嵌入工作台面板的示例。点击巡游，镜头会沿指定路线经过书厅与三层回廊。可以随时暂停，拖动查看细节。</p><div class="words"><div class="word"><b>清雅</b><small>qīng yǎ</small><p>清新雅致。像窗边的一束光，落在未合上的书页。</p></div><div class="word"><b>静谧</b><small>jìng mì</small><p>安静。在群星之下，给阅读留一点时间。</p></div></div></aside>
     <section class="panel" aria-label="体素图书馆嵌入面板">
       <div class="panel-head"><h2>星穹图书馆</h2><span>群星之下 · 万卷之中</span></div>
       <tisu-library class="viewer" id="library" view="outside" max-pixel-ratio="1.5"></tisu-library>
-      <div class="actions"><button id="enter">进入书厅</button><button id="upper">登上三层</button><button id="night">切换昼夜</button><span class="status" id="status">建筑全景</span></div>
+      <div class="actions"><button id="enter">整馆巡游</button><button id="upper">登上三层</button><button id="night">切换昼夜</button><span class="status" id="status">建筑全景</span></div>
       <p class="error" id="error" hidden></p>
     </section>
   </main>
@@ -24,14 +24,14 @@
     const library = document.querySelector('#library');
     library.addEventListener('library-state-change', event => {
       const state = event.detail;
-      document.querySelector('#status').textContent = `${state.mode === 'outside' ? '建筑全景' : `第 ${state.floor + 1} 层 · 自由漫步`}${state.night ? ' · 月夜' : ''}`;
+      document.querySelector('#status').textContent = `${state.mode === 'outside' ? '建筑全景' : `第 ${state.floor + 1} 层 · ${state.pathLabel}`}${state.night ? ' · 月夜' : ''}`;
     });
     library.addEventListener('library-error', () => {
       const error = document.querySelector('#error');
       error.hidden = false; error.textContent = '当前浏览器未能启动 3D 场景，请检查 WebGL 与硬件加速。';
     });
     defineLibraryElement();
-    document.querySelector('#enter').addEventListener('click', () => library.enter());
+    document.querySelector('#enter').addEventListener('click', () => library.playPath('tour'));
     document.querySelector('#upper').addEventListener('click', () => library.setView('upper'));
     document.querySelector('#night').addEventListener('click', () => library.setNight(!library.getState()?.night));
   </script>

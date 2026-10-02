@@ -1,6 +1,6 @@
 {
   "name": "@tisu/astral-library",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "description": "可嵌入辞书工作台的幻想体素图书馆",

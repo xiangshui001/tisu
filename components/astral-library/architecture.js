@@ -1,5 +1,6 @@
 import * as T from './vendor/three.module.js';
 import {addDetails} from './details.js';
+import {addInteriorDetails} from './interior.js';
 import {makeSurfaceMaps} from './surfaces.js';
 
 /** Procedural reconstruction of the six supplied references. All visible architecture is voxel geometry. */
@@ -28,9 +29,9 @@ export function buildArchitecture(scene) {
     for(let x=-r;x<=r+.05;x+=step)p(x,archY(x,r,spring),.12,.29,.29,.34,frame);
     p(0,base,.12,width+.6,.3,.4,C.shade);
     const count=width>5?4:2;
-    for(let j=1;j<count;j++){let x=-r+width*j/count,top=archY(x,r,spring)-.25;p(x,base+(top-base)/2,.15,.12,top-base,.15,frame)}
-    for(let y=base+2.2;y<spring;y+=2.8)p(0,y,.16,width,.09,.13,frame);
-    if(width>5){const rr=width*.13,cy=base+height-rr*1.4;
+    if(pane)for(let j=1;j<count;j++){let x=-r+width*j/count,top=archY(x,r,spring)-.25;p(x,base+(top-base)/2,.15,.12,top-base,.15,frame)}
+    if(pane)for(let y=base+2.2;y<spring;y+=2.8)p(0,y,.16,width,.09,.13,frame);
+    if(pane&&width>5){const rr=width*.13,cy=base+height-rr*1.4;
       for(let a=0;a<Math.PI*2;a+=.16)p(Math.cos(a)*rr,cy+Math.sin(a)*rr,.2,.19,.19,.18,frame);
       for(let k=0;k<8;k++){let a=k*Math.PI/4;p(Math.cos(a)*rr*.48,cy+Math.sin(a)*rr*.48,.23,.15,.15,.16,C.bright)}
       for(let s of [-1,1]){let xx=s*width*.23,yy=spring+rr*.15;for(let a=0;a<Math.PI*2;a+=.22)p(xx+Math.cos(a)*rr*.7,yy+Math.sin(a)*rr*.7,.19,.15,.15,.16,frame)}
@@ -142,6 +143,7 @@ export function buildArchitecture(scene) {
   for(let [y,z] of [[8,-10],[15,-10],[8,10],[15,10]]){planter(-8.4,z,y,1);planter(8.4,z,y,1)}
   for(let x of [-12,12]){ivy(x,12.8,13.8,10,.4,shell);banner(x,13.8,7.5,1.4,5,0,shell)}
   addDetails({C,b,panel,archY,shell,roof,inside,root,rnd,lantern,planter,ivy,solid,banner});
+  books+=addInteriorDetails({C,b,panel,inside,shell,archY,solid}).books;
   let voxelCount=0;for(let v of batches.values()){let mesh=new T.InstancedMesh(geometry,v.material,v.items.length),o=new T.Object3D();for(let [i,p] of v.items.entries()){o.position.set(p.x,p.y,p.z);o.scale.set(p.w,p.h,p.d);o.rotation.set(0,p.rot,0);o.updateMatrix();mesh.setMatrixAt(i,o.matrix)}mesh.castShadow=!v.material.transparent&&v.material.emissiveIntensity!==1.65;mesh.receiveShadow=true;v.group.add(mesh);voxelCount+=v.items.length;mesh.computeBoundingSphere()}
   const haloMaterials=[];
   for(let group of [root,shell,inside,roof]){

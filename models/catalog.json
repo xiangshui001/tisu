@@ -4,7 +4,7 @@
     {
       "id": "astral-library",
       "name": "星穹图书馆",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "entry": "components/astral-library/index.js",
       "example": "examples/library.html",
       "fullPageExample": "examples/full-page/index.html",
@@ -15,6 +15,14 @@
         "fantasy",
         "gothic",
         "JRPG"
+      ],
+      "navigation": "camera-paths",
+      "cameraPaths": [
+        "entrance",
+        "reading",
+        "gallery",
+        "upper",
+        "tour"
       ]
     }
   ]
