@@ -128,7 +128,7 @@ export function buildArchitecture(scene) {
     const cupX=x+.35,cupZ=z+.67,cy=y0+1.58;b(cupX,cy,cupZ,.35,.04,.35,C.paper,inside);for(let j=0;j<16;j++){let a=j*Math.PI/8;b(cupX+Math.cos(a)*.12,cy+.13,cupZ+Math.sin(a)*.12,.055,.2,.055,C.paper,inside);b(cupX+Math.cos(a)*.12,cy+.25,cupZ+Math.sin(a)*.12,.057,.025,.057,C.gold,inside)}b(cupX,cy+.15,cupZ,.19,.02,.19,'#785334',inside);for(let j=0;j<6;j++)b(cupX+.19,cy+.06+j*.03,cupZ,.04,.025,.05,C.paper,inside);
     b(x-w/2+.53,y0+1.58,z+.71,.47,.17,.12,C.paper,inside);b(x-w/2+.53,y0+1.67,z+.71,.42,.05,.14,'#f3e5c9',inside);b(x-.18,y0+1.666,z+.4,.055,.013,.47,'#ac5b44',inside);
     for(let j=0;j<3;j++){b(x+w/2-.55,y0+1.6+j*.13,z+.77,.6,.11,.36,['#55716c','#976346',C.blue][j],inside);b(x+w/2-.55,y0+1.6+j*.13,z+.95,.44,.065,.02,C.paper,inside)}
-    chair(x,z+1.65,y0,0,level);solid(x,z,w,2.2,level)
+    chair(x,z+1.65,y0,Math.PI,level);solid(x,z,w,2.2,level)
   }
   for(let z of [-7,-1,5])for(let x of [-4.2,4.2])desk(x,z,.9,0);
   for(let [level,y] of [[1,7.9],[2,14.9]])for(let z of [-6,4])desk(-12.8,z,y,level,2.8);
