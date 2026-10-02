@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>栖山书院 · 一座可以游览的山水藏书园</title>
+  <meta name="description" content="可旋转、近看、揭瓦参观的中式图书馆园林体素模型：重檐藏书楼、山水亭榭、松竹银杏、读书人、游鱼与飞鸟。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%23915543'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='23' fill='%23eee5cf'%3E山%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="masthead"><a href="./index.html" class="brand"><span class="seal">栖<br>山</span><span>TISU <i>园林藏集</i></span></a><span class="edition">山水有清音 · 书中见天地</span><div class="settings"><button id="light" aria-pressed="false"><span class="sun-icon">☼</span><span id="lightLabel">日光</span></button><span class="divider"></span><button id="cut" aria-pressed="false">揭瓦观书 <span>↗</span></button></div></header>
+  <main>
+    <div id="scene"></div>
+    <section class="intro"><div class="eyebrow">SHANSHUI LIBRARY GARDEN</div><h1>栖山<br>书院<span class="title-seal">藏书<br>山水</span></h1><p class="poem">半园山水，<br>一院书香。</p><div class="intro-rule"></div><p class="intro-copy">循廊入院，临水展卷。<br>在方寸之间，寻一处读书的园子。</p><button id="tour" class="tour">入园一游 <span>→</span></button><span class="tour-note">五处风景，慢慢看</span></section>
+    <aside class="scene-caption" aria-live="polite"><span class="caption-index" id="captionIndex">01 / 05</span><h2 id="viewTitle">山水全景</h2><p id="viewText">一池碧水，连接藏书楼、书斋与湖心亭。</p></aside>
+    <div class="viewer-tools"><button id="pause" aria-label="暂停游鱼、飞鸟与流水" aria-pressed="false" title="暂停动态">Ⅱ</button><span></span><button id="zoomIn" aria-label="放大" title="放大">＋</button><button id="zoomOut" aria-label="缩小" title="缩小">−</button><button id="reset" aria-label="返回全景" title="返回全景">⌂</button></div>
+    <div id="loading" role="status"><div class="loading-seal">山</div><p>正在铺开一卷山水…</p></div>
+    <div id="error" role="alert" hidden><h2>暂时无法打开三维场景</h2><p id="errorText"></p><button onclick="location.reload()">重新打开</button></div>
+  </main>
+  <footer><div class="interaction"><span class="drag-icon">✥</span><span>拖动环绕 · 滚轮近看<small>按住 Shift 拖动平移</small></span></div><nav class="views" aria-label="园林景点"><button data-view="garden" aria-current="true"><small>01</small>全园</button><button data-view="library"><small>02</small>藏书楼</button><button data-view="water"><small>03</small>湖心亭</button><button data-view="reading"><small>04</small>松下阅卷</button><button data-view="mountain"><small>05</small>叠山听泉</button></nav><div class="exports"><button id="capture">留影</button><button id="export">下载模型 <span>↓</span></button></div></footer>
+  <script type="module" src="./ui.js"></script>
+</body></html>
