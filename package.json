@@ -1,21 +1,27 @@
 {
   "name": "@tisu/astral-library",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
-  "description": "可嵌入辞书工作台的幻想体素图书馆",
+  "description": "可嵌入的体素图书馆：栖山书院中式园林与星穹图书馆",
   "exports": {
     ".": {
       "types": "./components/astral-library/index.d.ts",
       "import": "./components/astral-library/index.js"
     },
-    "./architecture": "./components/astral-library/architecture.js"
+    "./architecture": "./components/astral-library/architecture.js",
+    "./shanshui": "./components/shanshui-library/index.js"
   },
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "preview": "python3 -m http.server 8000"
+    "preview": "python3 -m http.server 8000",
+    "build:garden": "node scripts/build-garden.mjs",
+    "export:garden": "node scripts/export-garden.mjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }

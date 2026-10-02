@@ -2,6 +2,18 @@
   "schemaVersion": 1,
   "models": [
     {
+      "id": "shanshui-library",
+      "name": "栖山书院 · 山水藏书园",
+      "version": "1.0.0",
+      "entry": "components/shanshui-library/index.js",
+      "example": "examples/shanshui/index.html",
+      "fullPageExample": "examples/shanshui/index.html",
+      "style": ["voxel", "Chinese-garden", "Jiangnan", "library"],
+      "navigation": "orbit-and-bookmarks",
+      "cameraViews": ["garden", "library", "water", "reading", "mountain"],
+      "features": ["removable-roofs", "day-dusk", "animated-koi", "animated-birds", "GLB-export", "offline-HTML"]
+    },
+    {
       "id": "astral-library",
       "name": "星穹图书馆",
       "version": "2.0.0",

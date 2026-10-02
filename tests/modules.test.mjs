@@ -17,7 +17,7 @@ test('public package import is safe without a browser and registration is explic
 
 test('all relative module imports and example assets resolve locally', () => {
   function walk(directory) {
-    return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? walk(path.join(directory, entry.name)) : [path.join(directory, entry.name)]);
+    return fs.readdirSync(directory, { withFileTypes: true }).filter(entry => !['node_modules', '.git', 'dist'].includes(entry.name)).flatMap(entry => entry.isDirectory() ? walk(path.join(directory, entry.name)) : [path.join(directory, entry.name)]);
   }
   for (const file of walk(root).filter(file => /\.(js|html)$/.test(file) && !file.includes(`${path.sep}tests${path.sep}`))) {
     const text = fs.readFileSync(file, 'utf8');
